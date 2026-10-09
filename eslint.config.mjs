@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "**/node_modules/**",
+    // Machine-local Claude Code state (gitignored; not project source).
+    "HOME/**",
   ]),
 ]);
 

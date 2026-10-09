@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
+/*
+ * Dark-first design tokens. The whole site — marketing, auth and app surfaces —
+ * shares one palette, so we set the dark values on :root rather than relying on
+ * prefers-color-scheme. See lib/site.ts for the product name and copy.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  --background: #0a0c10;
+  --foreground: #e8ecf3;
+
+  /* Layered surfaces: page < surface < raised */
+  --surface: #12161d;
+  --raised: #1a202b;
+  --border: #29313f;
+  --muted: #93a0b4;
+
+  /* Brand: sky leads (matches the DropZone), violet supports the gradient */
+  --brand: #38bdf8;
+  --brand-2: #8b5cf6;
+  --brand-foreground: #04121c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-brand-foreground: var(--brand-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Brand gradient used for accent text and thin rules. */
+.text-gradient {
+  background-image: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rule-gradient {
+  background-image: linear-gradient(90deg, var(--brand), var(--brand-2) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
