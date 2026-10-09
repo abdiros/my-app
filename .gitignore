@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Claude Code local state (not project source)
 /HOME/
+# Symlink shims to .agents/skills (machine-specific, regenerated locally)
+/.claude/skills/

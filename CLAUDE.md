@@ -30,3 +30,9 @@ There is no test runner configured yet. Type checking is `npx tsc --noEmit` (tsc
 - **Styling**: Tailwind v4 via `app/globals.css` (`@import "tailwindcss"` plus an `@theme inline` block mapping `--color-background`/`--color-foreground` and the Geist font variables). Theme tokens live in this CSS file, not a JS config.
 - **Path alias**: `@/*` → repo root (`tsconfig.json` `paths`). No `src/` dir — code lives at the project root.
 - **TypeScript strict mode** is on.
+
+## Skills
+
+Project skills live in `.agents/skills/<name>/` (real files, checked in). `.claude/skills/<name>` are symlinks to those directories so the harness picks them up — edit the `.agents/` copy, never the symlink. `skills-lock.json` pins each skill to its upstream source (GitHub) and a content hash; don't hand-edit it. Two skills are registered:
+- `next-cache-components-optimizer` — relevant whenever touching caching/rendering, since `cacheComponents: true` is on.
+- `frontend-design` — for new UI or visual redesign work.
